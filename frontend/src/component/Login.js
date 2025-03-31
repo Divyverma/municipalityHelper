@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/login.css";
 import { Link, useNavigate } from "react-router";
+const url = process.env.REACT_APP_SERVER_URL
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const Login = () => {
   const [pass, setPass] = useState("");
 
   const submitLogin = async () => {
-    const response = await fetch("http://localhost:5000/login", {
+    const response = await fetch(`${url}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

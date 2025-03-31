@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { FaLocationDot } from "react-icons/fa6";
+const url = process.env.REACT_APP_SERVER_URL
 
 
 const ProblemCard = () => {
@@ -12,7 +13,7 @@ const ProblemCard = () => {
   }, [])
 
   const getProblem = async () => {
-    var result = await fetch("http://localhost:5000/problems")
+    var result = await fetch(`${url}/problems`)
     result = await result.json()
     setProblems(result.result);
     // console.log(result.result.length)

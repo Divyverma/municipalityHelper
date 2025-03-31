@@ -3,6 +3,7 @@ import Trackbar from "./TrackBar";
 import { FaLocationDot } from "react-icons/fa6";
 import { useParams } from "react-router";
 import axios from 'axios'
+const url = process.env.REACT_APP_SERVER_URL
 
 const Detail = () => {
 
@@ -12,7 +13,7 @@ const Detail = () => {
   useEffect(()=>{
     const getDetail=async()=>{
       try{
-        var result = await axios.get(`http://localhost:5000/problem/${id}`);
+        var result = await axios.get(`${url}/problem/${id}`);
         // result = await result.json()
         setDetail(result.data.result)
       }catch(error){

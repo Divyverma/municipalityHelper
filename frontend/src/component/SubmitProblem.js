@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+const url = process.env.REACT_APP_SERVER_URL
 
 
 const SubmitProblem = () => {
@@ -24,7 +25,7 @@ const SubmitProblem = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/reportproblem", {
+      const response = await fetch(`${url}/reportproblem`, {
         method: "POST",
         body: JSON.stringify({ fname, lname, img, title, location, description }),
         headers: {

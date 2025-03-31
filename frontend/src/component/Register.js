@@ -8,10 +8,10 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [pass, setpass] = useState("");
   const [post, setPost] = useState("");
-
+  const url = process.env.REACT_APP_SERVER_URL
   const submitForm = async () => {
 
-    const response = await fetch("http://localhost:5000/register", {
+    const response = await fetch(`${url}/register`, {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
