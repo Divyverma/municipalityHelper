@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start":"nodemon index.js",
+    "build": "npm install && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "divyash-verma",
