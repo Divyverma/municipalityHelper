@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/login.css";
 import { Link, useNavigate } from "react-router";
 import Loader from "./Loader";
+import {toast} from 'react-toastify'
 const url = process.env.REACT_APP_SERVER_URL
 
 const Login = () => {
@@ -24,12 +25,12 @@ const Login = () => {
     const data = await response.json();
 
     if (response.ok) {
-      alert(data.message);
+      toast.success(data.message);
       localStorage.setItem("authToken", data.post);
       setLoader(false)
       navigate("/");
     } else {
-      alert(data.message)
+      toast.error(data.message)
     }
   };
 

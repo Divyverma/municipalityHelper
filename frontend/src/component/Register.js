@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import "../styles/register.css";
 import Loader from "./Loader";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -26,11 +27,11 @@ const Register = () => {
     })
     const data = await response.json()
     if(response.ok){
-      alert(data.message)
+      toast.success(data.message)
       setLoader(false)
       navigate('/login')
     }else{
-      alert(data.message)
+      toast.error(data.message)
     }
   };
 

@@ -8,6 +8,9 @@ import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
 import Detail from "./component/Detail";
 import "./index.css";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const isAunthenticated = () => {
   return localStorage.getItem("authToken");
@@ -19,6 +22,10 @@ const ProtectedRoute = ({ children }) => {
 
 const App = () => {
   return (
+    <>
+
+    <ToastContainer position="top-right" autoClose={3000} />
+
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -52,7 +59,7 @@ const App = () => {
       </Routes>
       <Footer />
     </BrowserRouter>
-  );
+  </>);
 };
 
 export default App;

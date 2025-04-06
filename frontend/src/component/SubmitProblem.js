@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Loader from './Loader';
+import { toast } from 'react-toastify';
 const url = process.env.REACT_APP_SERVER_URL
 
 
@@ -37,11 +38,11 @@ const SubmitProblem = () => {
       })
       const data = await response.json()
       if (data) {
-        alert("Problem submitted successfully")
+        toast.success("Problem submitted successfully")
         navigate('/');
         setLoader(false);
       } else {
-        alert("Error submitting problem")
+        toast.error("Error submitting problem")
       }
     } catch (error) {
       console.log(error.message)
