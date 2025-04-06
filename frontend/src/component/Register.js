@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import "../styles/register.css";
+import Loader from "./Loader";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -8,9 +9,14 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [pass, setpass] = useState("");
   const [post, setPost] = useState("");
-  const url = process.env.REACT_APP_SERVER_URL
-  const submitForm = async () => {
+  const [loader, setLoader] = useState(false)
 
+
+  const url = process.env.REACT_APP_SERVER_URL
+
+
+  const submitForm = async () => {
+    setLoader(true)
     const response = await fetch(`${url}/register`, {
       method:"POST",
       headers:{
@@ -21,11 +27,22 @@ const Register = () => {
     const data = await response.json()
     if(response.ok){
       alert(data.message)
+      setLoader(false)
       navigate('/login')
     }else{
       alert(data.message)
     }
   };
+
+  if(loader){
+    return(
+      <>
+        <div className="reg-container loader">
+          <Loader/>
+        </div>
+      </>
+    )
+  }
 
   return (
     <div className="reg-container">

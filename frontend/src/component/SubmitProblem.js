@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import Loader from './Loader';
 const url = process.env.REACT_APP_SERVER_URL
 
 
@@ -21,9 +22,11 @@ const SubmitProblem = () => {
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
   const [img, setImg] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
       const response = await fetch(`${url}/reportproblem`, {
         method: "POST",
@@ -36,14 +39,23 @@ const SubmitProblem = () => {
       if (data) {
         alert("Problem submitted successfully")
         navigate('/');
-
-        
+        setLoader(false);
       } else {
         alert("Error submitting problem")
       }
     } catch (error) {
       console.log(error.message)
     }
+  }
+
+  if(loader){
+    return(
+      <>
+        <div className='md:p-8 bg-base-100 w-full md:h-[86vh] flex items-center justify-center' >
+        <Loader/>
+        </div>
+      </>
+    )
   }
 
   return (

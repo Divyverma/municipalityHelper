@@ -108,6 +108,12 @@
     border-radius: 8px;
 }
 
+.loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 @media (max-width: 450px) {
     .reg-container {

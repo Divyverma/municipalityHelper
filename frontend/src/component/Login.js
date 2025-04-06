@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "../styles/login.css";
 import { Link, useNavigate } from "react-router";
+import Loader from "./Loader";
 const url = process.env.REACT_APP_SERVER_URL
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [loader, setLoader] = useState(false);
 
   const submitLogin = async () => {
+    setLoader(true)
     const response = await fetch(`${url}/login`, {
       method: "POST",
       headers: {
@@ -23,11 +26,22 @@ const Login = () => {
     if (response.ok) {
       alert(data.message);
       localStorage.setItem("authToken", data.post);
+      setLoader(false)
       navigate("/");
     } else {
       alert(data.message)
     }
   };
+
+  if(loader){
+    return(
+      <>
+      <div className="log-container loader" >
+        <Loader/>
+      </div>
+      </>
+    )
+  }
 
   return (
     <div className="log-container">

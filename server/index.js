@@ -6,11 +6,12 @@ const pool = require("./db");
 // middleware
 app.use(
     cors({
-      origin: "https://municipality-helper.vercel.app", // Replace with your frontend URL
+      origin: "https://municipality-helper.vercel.app/login",
       methods: "GET,POST,PUT,DELETE",
-      credentials: true, // Allow cookies if needed
+      credentials: true,
     })
   );
+// app.use(cors());
 app.use(express.json())
 
 
@@ -51,7 +52,7 @@ app.post("/login", async (req, res) => {
         return res.status(400).json({ message: "Invalid email or Password" })
     }
 
-    console.log(user.rows)
+    // console.log(user.rows)
 
     res.status(200).json({ message: "Login successfully" , post : user.rows[0].post})
 })
