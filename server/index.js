@@ -4,14 +4,14 @@ const cors = require("cors")
 const pool = require("./db");
 
 // middleware
-app.use(
-    cors({
-      origin: "https://municipality-helper.vercel.app/login",
-      methods: "GET,POST,PUT,DELETE",
-      credentials: true,
-    })
-  );
-// app.use(cors());
+// app.use(
+//     cors({
+//       origin: "https://municipality-helper.vercel.app",
+//       methods: "GET,POST,PUT,DELETE",
+//       credentials: true,
+//     })
+//   );
+app.use(cors());
 app.use(express.json())
 
 

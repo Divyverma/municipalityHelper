@@ -31,18 +31,19 @@ const Login = () => {
       navigate("/");
     } else {
       toast.error(data.message)
+      setLoader(false)
     }
   };
 
-  if(loader){
-    return(
-      <>
-      <div className="log-container loader" >
-        <Loader/>
-      </div>
-      </>
-    )
-  }
+  // if(loader){
+  //   return(
+  //     <>
+  //     <div className="log-container loader" >
+  //       <Loader/>
+  //     </div>
+  //     </>
+  //   )
+  // }
 
   return (
     <div className="log-container">
